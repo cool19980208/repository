@@ -1598,3 +1598,51 @@ https://static.r2coding.com/r2_static/pdf/c.pdf
 # 持续更新中...
 
 网站内容会持续保持更新，欢迎收藏品鉴！
+
+---
+# 运维
+---
+
+## 硬件问题
+---
+### 打印机
+#### **型号：DCP-7180DN**
+- **扫描电子件的上面出现黑线**
+  - 用酒精和纸去擦一擦打印机上面的那个扫描的地方
+#### **型号：Generic 20BW-5i（财务打印机）**
+- **IP不知道为什么变动了**
+  - 进入管理员设置里面，密码为“111111”，然后调换IP即可。
+
+## 软件问题
+---
+### **金蝶Kingdee（金蝶云星空）**
+
+- **销售订单保存报错：“在位置 0 处没有任何行”**
+  - 原因：位置解析没有解析出来，因为二开的这个解析功能有10%的失败率，主要就是靠高德地图。
+  - ![位置解析1](https://github.com/cool19980208/picx-images-hosting/raw/master/20240725/位置解析1.2doli6w5xs.webp)
+  - 解决方案：金蝶根据管易云传过来的“地区信息”进行位置解析，保存成功后，前岩中点击“重传”即可。云星空审核会有些许延迟。
+  - ![0行](https://github.com/cool19980208/picx-images-hosting/raw/master/20240725/0行.6m3ss1pp8d.webp)
+  - ![重传](https://github.com/cool19980208/picx-images-hosting/raw/master/20240725/重传.969n4op0fv.webp)
+- **还有例外一种报错，也是保存不了**
+  - 原因：是销售订单中的数据有空格
+  - 解决方案：一个一个排查输入的数据是否还有空格符号，一般情况下都是在客户地址
+
+### CRM
+
+- 客户传输报错：**Call ERP:调用外部http接口失败，错误信息:数据保存失败，错误提示:将截断字符串或二进制数据。语句已终止**
+- ![CRM报错](https://github.com/cool19980208/picx-images-hosting/raw/master/20240727/CRM报错.5mnphmq3w1.webp)
+- ![CRM报错2](https://github.com/cool19980208/picx-images-hosting/raw/master/20240727/CRM报错2.8s37gkmibj.webp)
+- 解决方案：把详细地址的长度变短，重新传输即可
+# 学习
+---
+
+## 博客hexo
+---
+
+### hexo的报错问题
+
+#### 1.hexo d 指令同步github后报错，没有同步成功
+报错：FATAL Something's wrong. Maybe you can find the solution here
+解决方案：打开配置文件，把repo的地址删除，然后重新写入即可
+
+![解决方案1](https://github.com/cool19980208/picx-images-hosting/raw/master/20240725/解决方案1.1ovby5scgv.webp)
