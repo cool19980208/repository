@@ -1646,3 +1646,37 @@ https://static.r2coding.com/r2_static/pdf/c.pdf
 解决方案：打开配置文件，把repo的地址删除，然后重新写入即可
 
 ![解决方案1](https://github.com/cool19980208/picx-images-hosting/raw/master/20240725/解决方案1.1ovby5scgv.webp)
+
+
+## 录屏ocam报错(最后经过排除，鉴定为麦克风问题)
+> 电脑：联想Thinkpad T14p
+> 系统：W11
+
+报错：ocam录制屏幕时提示录制失败。 导致: WASRecord： pAudioClient->Initialize failed.
+The method failed to create the audio endpoint for the render or the capture device.
+
+![ocam录屏](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/ocam录屏.pf8xgzizm.webp)
+
+解决过程
+- 1.尝试打开麦克风
+  - 本来就是打开的，重新打开还是一样报错
+  - ![录屏报错1](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/录屏报错1.2yy9gyon90.webp)
+- 2.尝试声卡驱动升级（但是驱动已经是最新的了）
+- 3.换EV录屏，显示麦克风掉线。
+- 4.去设置里面，找到麦克风，测试一下麦克风是否正常
+  - 这时候发现麦克风不管用~测试也没有任何声音
+
+## 配电源线
+> 背景：工控机少了一个电源线，只是去网上寻找一下了。之前剩的那个是嘉航适配器改3孔接口使用
+
+- 1.测量3孔接口的直径
+  - ![3孔接口](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/3孔接口.lzdgqkbt.webp)
+  - ![测直径](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/测直径.1vyk632zxo.webp)
+- 2.测接口的正负极的分布
+  - 比如：1正2负3地/空
+- 3.电源的输出
+  - 比如：12.0V---4.0A  48.0W
+  - ![电源](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/电源.13loocme7i.webp)
+- 4.最后在淘宝的“奇秀伟数码专营店”下的**航空头电源-3孔**，可以开发票报销~（花费85）
+  - JHDZ实体店感觉也能买，还便宜，42快钱，但是不满100不开发票，所以就没买这家
+
