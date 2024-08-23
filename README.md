@@ -1650,6 +1650,7 @@ https://static.r2coding.com/r2_static/pdf/c.pdf
 #### 2.hexo 部署发现 .NET Core的文件夹内容读取不到
 原因：发现一级文件夹的名称不能是“.”开头，要不然hexo会忽略
 解决方案：把开头的. 去掉，然后重新同步即可
+![hexo报错](https://github.com/cool19980208/picx-images-hosting/raw/master/20240823/hexo报错.26les9cfqg.webp)
 
 
 ## 录屏ocam报错(最后经过排除，鉴定为麦克风问题)
