@@ -1613,6 +1613,31 @@ https://static.r2coding.com/r2_static/pdf/c.pdf
 - **IP不知道为什么变动了**
   - 进入管理员设置里面，密码为“111111”，然后调换IP即可。
 
+### 配电源线
+> 背景：工控机少了一个电源线，只是去网上寻找一下了。之前剩的那个是嘉航适配器改3孔接口使用
+
+- 1.测量3孔接口的直径
+  - ![3孔接口](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/3孔接口.lzdgqkbt.webp)
+  - ![测直径](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/测直径.1vyk632zxo.webp)
+- 2.测接口的正负极的分布
+  - 比如：1正2负3地/空
+- 3.电源的输出
+  - 比如：12.0V---4.0A  48.0W
+  - ![电源](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/电源.13loocme7i.webp)
+- 4.最后在淘宝的“奇秀伟数码专营店”下的**航空头电源-3孔**，可以开发票报销~（花费85）
+  - JHDZ实体店感觉也能买，还便宜，42快钱，但是不满100不开发票，所以就没买这家
+
+### 电脑没网络
+- 网络测试显示：“远程计算机或设备将不接受连接”
+  - ![问题](https://github.com/cool19980208/picx-images-hosting/raw/master/20240826/问题.4917k5fbpk.webp)
+- WIN+R调出运行窗口➡️输入inetcpl.cpl，
+  - ![步骤1](https://github.com/cool19980208/picx-images-hosting/raw/master/20240826/步骤1.3yedr01iw7.webp)
+- 图2➡️属性窗口，连接，局域网设置，
+  - ![步骤2](https://github.com/cool19980208/picx-images-hosting/raw/master/20240826/步骤2.13lpl7mc4n.webp)
+- 图3➡️代理服务器取消☑️，
+  - ![步骤3](https://github.com/cool19980208/picx-images-hosting/raw/master/20240826/步骤3.4uav6gb7c8.webp)
+- 完成喽
+
 ## 软件问题
 ---
 ### **金蝶Kingdee（金蝶云星空）**
@@ -1633,6 +1658,31 @@ https://static.r2coding.com/r2_static/pdf/c.pdf
 - ![CRM报错](https://github.com/cool19980208/picx-images-hosting/raw/master/20240727/CRM报错.5mnphmq3w1.webp)
 - ![CRM报错2](https://github.com/cool19980208/picx-images-hosting/raw/master/20240727/CRM报错2.8s37gkmibj.webp)
 - 解决方案：把详细地址的长度变短，重新传输即可
+
+
+### 录屏ocam报错(最后经过排除，鉴定为麦克风问题)
+> 电脑：联想Thinkpad T14p
+> 系统：W11
+
+报错：ocam录制屏幕时提示录制失败。 导致: WASRecord： pAudioClient->Initialize failed.
+The method failed to create the audio endpoint for the render or the capture device.
+
+![ocam录屏](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/ocam录屏.pf8xgzizm.webp)
+
+解决过程
+- 1.尝试打开麦克风
+  - 本来就是打开的，重新打开还是一样报错
+  - ![录屏报错1](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/录屏报错1.2yy9gyon90.webp)
+- 2.尝试声卡驱动升级（但是驱动已经是最新的了）
+- 3.换EV录屏，显示麦克风掉线。
+- 4.去设置里面，找到麦克风，测试一下麦克风是否正常
+  - 这时候发现麦克风不管用~测试也没有任何声音
+
+
+### Sourcetree
+- 用Sourcetree 把代码传到github上的时候，提示：github连接失败
+- 解决办法：可以用Watt Toolkit(前身Steam++) 打开github连接，然后在同步即可
+
 # 学习
 ---
 
@@ -1652,36 +1702,25 @@ https://static.r2coding.com/r2_static/pdf/c.pdf
 解决方案：把开头的. 去掉，然后重新同步即可
 ![hexo报错](https://github.com/cool19980208/picx-images-hosting/raw/master/20240823/hexo报错.26les9cfqg.webp)
 
+#### 3.hexo d 同步到Github上时报错
+- 报错：Failed to connect to github.com port 443 after 21084 ms: Couldn't connect to serve
+- 原因：代理地址不行
+- 解决方法：开启本地(本机)代理
+  - 1.点击设置
+  - 2.搜索代理服务器设置
+    - ![代理1](https://github.com/cool19980208/picx-images-hosting/raw/master/20240903/代理1.5tqyv0ba0j.webp)
+  - 3.查看“手动设置代理”的地址IP和端口
+    - 路径：设置->网络和Internet->代理->地址:端口
+    - ![代理2](https://github.com/cool19980208/picx-images-hosting/raw/master/20240903/代理2.2a51578k8k.webp)
+  - 4.在git配置本地代理
 
-## 录屏ocam报错(最后经过排除，鉴定为麦克风问题)
-> 电脑：联想Thinkpad T14p
-> 系统：W11
+```C#
+git config --global http.proxy http://127.0.0.1:10809
+git config --global https.proxy http://127.0.0.1:10809
 
-报错：ocam录制屏幕时提示录制失败。 导致: WASRecord： pAudioClient->Initialize failed.
-The method failed to create the audio endpoint for the render or the capture device.
+# 取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
 
-![ocam录屏](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/ocam录屏.pf8xgzizm.webp)
-
-解决过程
-- 1.尝试打开麦克风
-  - 本来就是打开的，重新打开还是一样报错
-  - ![录屏报错1](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/录屏报错1.2yy9gyon90.webp)
-- 2.尝试声卡驱动升级（但是驱动已经是最新的了）
-- 3.换EV录屏，显示麦克风掉线。
-- 4.去设置里面，找到麦克风，测试一下麦克风是否正常
-  - 这时候发现麦克风不管用~测试也没有任何声音
-
-## 配电源线
-> 背景：工控机少了一个电源线，只是去网上寻找一下了。之前剩的那个是嘉航适配器改3孔接口使用
-
-- 1.测量3孔接口的直径
-  - ![3孔接口](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/3孔接口.lzdgqkbt.webp)
-  - ![测直径](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/测直径.1vyk632zxo.webp)
-- 2.测接口的正负极的分布
-  - 比如：1正2负3地/空
-- 3.电源的输出
-  - 比如：12.0V---4.0A  48.0W
-  - ![电源](https://github.com/cool19980208/picx-images-hosting/raw/master/20240803/电源.13loocme7i.webp)
-- 4.最后在淘宝的“奇秀伟数码专营店”下的**航空头电源-3孔**，可以开发票报销~（花费85）
-  - JHDZ实体店感觉也能买，还便宜，42快钱，但是不满100不开发票，所以就没买这家
-
+![代理3](https://github.com/cool19980208/picx-images-hosting/raw/master/20240903/代理3.4917vje2k5.webp)
